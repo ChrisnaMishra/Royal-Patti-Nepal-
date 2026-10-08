@@ -40,7 +40,7 @@ function shuffle(){deck=[];for(const s of suits)for(const [r,v] of ranks)deck.pu
 function score(cards){const a=[...cards].sort((x,y)=>y.v-x.v),vals=a.map(c=>c.v),sameSuit=a.every(c=>c.s===a[0].s),trips=vals[0]===vals[1]&&vals[1]===vals[2],pair=vals[0]===vals[1]||vals[1]===vals[2]||vals[0]===vals[2];let straight=vals[0]-vals[1]===1&&vals[1]-vals[2]===1;if(vals.join(',')==='14,3,2')straight=true;
 if(trips)return [6,vals[0]];if(straight&&sameSuit)return [5,vals[0]===14&&vals[1]===3?3:vals[0]];if(sameSuit)return [4,...vals];if(straight)return [3,vals[0]===14&&vals[1]===3?3:vals[0]];if(pair){let p=vals[0]===vals[1]?vals[0]:vals[1]===vals[2]?vals[1]:vals[0];return [2,p,...vals.filter(v=>v!==p)]}return [1,...vals]}
 function compare(a,b){const x=score(a),y=score(b);for(let i=0;i<Math.max(x.length,y.length);i++){if((x[i]||0)!==(y[i]||0))return (x[i]||0)>(y[i]||0)?1:-1}return 0}
-function handName(c){return ['High card','Pair','Color pair','Sequence','Color','Pure sequence','Trail'][score(c)[0]-1]||'Hand'}
+function handName(c){return ({1:'High card',2:'Pair',3:'Sequence',4:'Color',5:'Pure sequence',6:'Trail'})[score(c)[0]]||'Hand'}
 function fmt(n){return n.toLocaleString('en-US')}
 function renderChips(){$('chipCount').textContent=fmt(chips);$('lobbyChips').textContent=fmt(chips);$('played').textContent=played;$('wins').textContent=wins}
 function showScreen(id){['loginScreen','lobbyScreen','gameScreen'].forEach(x=>$(x).classList.toggle('hidden',x!==id))}
