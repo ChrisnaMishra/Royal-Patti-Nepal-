@@ -27,7 +27,7 @@ Create a polished playable demo before connecting online multiplayer. Real multi
 The card-ranking tests use Node.js's built-in test runner and do not require installing packages.
 
 ```bash
-node --test tests/score.test.cjs
+node --test tests/*.test.cjs
 ```
 
 The tests cover hand-category order, the A-3-2 low sequence, kicker tie-breaks, equal hands, hand labels, and invalid input handling. These tests validate the card-ranking functions; they do not replace real browser/mobile testing of the full interface.
