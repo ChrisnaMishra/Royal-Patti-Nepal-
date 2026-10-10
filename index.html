@@ -201,4 +201,11 @@ $('friendsBtn').onclick=()=>openInfo('Friends','Friend features are not availabl
 $('settingsBtn').onclick=()=>openInfo('Settings','Player name: '+player+'. This demo does not use an online account or send your gameplay data to a server.');
 $('closeDialogBtn').onclick=()=> $('infoDialog').close();
 $('playerName').addEventListener('keydown',e=>{if(e.key==='Enter')login(true)});
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => {
+      // The demo remains playable if offline support cannot be registered.
+    });
+  });
+}
 </script></body></html>
