@@ -1,0 +1,71 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+
+const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
+const start = html.indexOf('function score(cards)');
+const end = html.indexOf('function fmt(n)', start);
+assert.notEqual(start, -1, 'score() must exist in index.html');
+assert.notEqual(end, -1, 'score() must be followed by fmt()');
+
+const context = {};
+vm.runInNewContext(html.slice(start, end) + '\nthis.score = score; this.compare = compare; this.handName = handName;', context);
+const { score, compare, handName } = context;
+
+const hand = (cards) => cards.map(([v, s]) => ({ v, s }));
+const trail = hand([[9, '♠'], [9, '♥'], [9, '♦']]);
+const pureSequence = hand([[7, '♣'], [6, '♣'], [5, '♣']]);
+const sequence = hand([[7, '♣'], [6, '♥'], [5, '♠']]);
+const color = hand([[14, '♦'], [10, '♦'], [4, '♦']]);
+const pairKings = hand([[13, '♣'], [13, '♥'], [8, '♦']]);
+const pairKingsLowerKicker = hand([[13, '♠'], [13, '♦'], [6, '♣']]);
+const highAce = hand([[14, '♠'], [11, '♥'], [4, '♣']]);
+const wheel = hand([[14, '♣'], [3, '♣'], [2, '♣']]);
+const wheelMixed = hand([[14, '♣'], [3, '♥'], [2, '♦']]);
+
+test('hand categories follow the expected Teen Patti practice order', () => {
+  assert.equal(score(trail)[0], 6);
+  assert.equal(score(pureSequence)[0], 5);
+  assert.equal(score(sequence)[0], 4);
+  assert.equal(score(color)[0], 3);
+  assert.equal(score(pairKings)[0], 2);
+  assert.equal(score(highAce)[0], 1);
+  assert.ok(compare(trail, pureSequence) > 0);
+  assert.ok(compare(pureSequence, sequence) > 0);
+  assert.ok(compare(sequence, color) > 0);
+  assert.ok(compare(color, pairKings) > 0);
+  assert.ok(compare(pairKings, highAce) > 0);
+});
+
+test('A-3-2 is treated as the low sequence and loses to 7-6-5', () => {
+  assert.equal(score(wheel)[0], 5);
+  assert.equal(score(wheelMixed)[0], 4);
+  assert.ok(compare(sequence, wheelMixed) > 0);
+  assert.ok(compare(pureSequence, wheel) > 0);
+});
+
+test('same-rank pairs use the kicker to break ties', () => {
+  assert.ok(compare(pairKings, pairKingsLowerKicker) > 0);
+});
+
+test('identical hand values tie even when suits differ', () => {
+  const otherPairKings = hand([[13, '♦'], [13, '♠'], [8, '♣']]);
+  assert.equal(compare(pairKings, otherPairKings), 0);
+});
+
+test('hand names match the score category labels', () => {
+  assert.equal(handName(trail), 'Three of a kind');
+  assert.equal(handName(pureSequence), 'Pure sequence');
+  assert.equal(handName(sequence), 'Sequence');
+  assert.equal(handName(color), 'Color');
+  assert.equal(handName(pairKings), 'Pair');
+  assert.equal(handName(highAce), 'High card');
+});
+
+test('invalid hands return a safe low score instead of throwing', () => {
+  assert.deepEqual(Array.from(score([])), [0]);
+  assert.deepEqual(Array.from(score(null)), [0]);
+  assert.deepEqual(Array.from(score([{ v: 14, s: '♠' }])), [0]);
+});
