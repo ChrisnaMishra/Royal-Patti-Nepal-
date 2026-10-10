@@ -40,6 +40,7 @@ function bootGame() {
   };
   const context = {
     document,
+    navigator: {},
     Math,
     Number,
     Array,
