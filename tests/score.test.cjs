@@ -11,7 +11,7 @@ assert.notEqual(start, -1, 'score() must exist in index.html');
 assert.notEqual(end, -1, 'score() must be followed by fmt()');
 
 const context = {};
-vm.runInNewContext(html.slice(start, end) + '\nthis.score = score; this.compare = compare; this.handName = handName;', context);
+vm.runInNewContext("const suits = ['♠','♥','♦','♣'];\n" + html.slice(start, end) + '\nthis.score = score; this.compare = compare; this.handName = handName;', context);
 const { score, compare, handName } = context;
 
 const hand = (cards) => cards.map(([v, s]) => ({ v, s }));
