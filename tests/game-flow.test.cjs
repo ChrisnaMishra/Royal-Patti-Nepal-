@@ -102,17 +102,30 @@ test('starting another round resets finished state and deals fresh hands', () =>
   assert.equal(game.get('roundBadge').textContent, 'PRACTICE ROUND 2');
 });
 
-test('see hand reveals the hand label without completing the round', () => {
+test('cards start face-down and See hand reveals them without completing the round', () => {
   const game = bootGame();
   game.get('guestBtn').onclick();
   game.get('startBtn').onclick();
+  assert.equal(game.get('hand').children.length, 3);
+  assert.ok(game.get('hand').children.every(card => card.className === 'back'));
   game.get('seeBtn').onclick();
   const state = game.state();
   assert.equal(state.finished, false);
   assert.equal(state.played, 0);
   assert.match(game.get('handLabel').textContent, /YOUR HAND/);
+  assert.ok(game.get('hand').children.every(card => card.className.includes('card')));
   assert.equal(game.get('seeBtn').disabled, true);
   assert.equal(game.get('playBtn').disabled, false);
+});
+
+test('Reveal & compare exposes the player cards even if they were not seen first', () => {
+  const game = bootGame();
+  game.get('guestBtn').onclick();
+  game.get('startBtn').onclick();
+  assert.ok(game.get('hand').children.every(card => card.className === 'back'));
+  game.get('playBtn').onclick();
+  assert.ok(game.get('hand').children.every(card => card.className.includes('card')));
+  assert.equal(game.state().finished, true);
 });
 
 test('practice bonus is reflected in both displayed balances', () => {
