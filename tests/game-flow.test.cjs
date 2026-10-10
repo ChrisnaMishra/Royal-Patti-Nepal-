@@ -5,7 +5,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 
 const html = fs.readFileSync(path.join(__dirname, '..', 'index.html'), 'utf8');
-const inlineScript = [...html.matchAll(/<script[^>]*>([\s\\S]*?)<\/script>/gi)].map(m => m[1]).join('\n');
+const inlineScript = [...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/gi)].map(m => m[1]).join('\n');
 assert.ok(inlineScript.includes('function newHand()'), 'game script should include newHand()');
 
 class FakeElement {
