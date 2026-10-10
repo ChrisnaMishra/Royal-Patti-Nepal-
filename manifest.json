@@ -1,7 +1,7 @@
 {
   "name": "Royal Patti Nepal",
   "short_name": "Royal Patti",
-  "description": "A single-player Teen Patti demo with virtual chips only.",
+  "description": "Single-player card practice demo using practice points only; no cash wagers or cash-outs.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
