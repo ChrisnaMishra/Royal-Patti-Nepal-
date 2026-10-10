@@ -115,9 +115,22 @@ button:focus-visible,input:focus-visible{outline:3px solid #ffd166;outline-offse
   .seatname{font-size:9px}
 }
 
+
+/* Accessible navigation and no-wager practice UI */
+.lobbybottomnav .navtile{font:inherit;font-size:12px;cursor:pointer;width:100%;min-height:72px}
+.lobbybottomnav .navtile b{font-size:23px}
+.pot{letter-spacing:.5px}
+dialog{width:min(92vw,420px);border:1px solid #8e8bff;border-radius:18px;background:linear-gradient(145deg,#20284c,#151b34);color:#fffdf7;padding:0;box-shadow:0 24px 80px #0009}
+dialog::backdrop{background:#07091acc;backdrop-filter:blur(4px)}
+.dialoginner{padding:22px}
+.dialoginner h2{margin:0 0 10px;color:#ffe08a}
+.dialoginner p{line-height:1.6;color:#d8def8}
+button:focus-visible{outline:3px solid #ffd166;outline-offset:3px}
+@media(max-width:420px){.lobbybottomnav .navtile{font-size:11px;min-height:68px}.dialoginner{padding:17px}}
+
 </style></head><body>
 <div class="wrap">
-<header class="top"><div class="brand"><div class="crest" style="padding:0;overflow:hidden;border-radius:12px"><img src="./icon.svg?v=2" alt="Royal Patti icon" style="width:100%;height:100%;object-fit:cover"></div><div><h1>ROYAL PATTI NEPAL</h1><small>THE ROYAL CARD TABLE</small></div></div><div class="chipbox">🪙 <span id="chipCount">1,000</span> virtual chips</div></header>
+<header class="top"><div class="brand"><div class="crest" style="padding:0;overflow:hidden;border-radius:12px"><img src="./icon.svg?v=2" alt="Royal Patti icon" style="width:100%;height:100%;object-fit:cover"></div><div><h1>ROYAL PATTI NEPAL</h1><small>THE ROYAL CARD TABLE</small></div></div><div class="chipbox" aria-label="Practice points">⭐ <span id="chipCount">1,000</span> practice points</div></header>
 <section id="loginScreen" class="panel login">
 <div class="eyebrow">WELCOME TO THE TABLE</div><h2>Play your hand.</h2><p class="muted">Challenge computer opponents in a classic Teen Patti demo.</p>
 <label for="playerName" class="muted">Your player name</label><input id="playerName" class="input" maxlength="20" placeholder="Enter a display name" autocomplete="nickname">
@@ -131,32 +144,33 @@ button:focus-visible,input:focus-visible{outline:3px solid #ffd166;outline-offse
     <div class="herobadge"><img src="./icon.svg?v=2" alt="Royal Patti Nepal app icon"></div>
   </div>
   <div class="lobbystats">
-    <div class="stat"><span class="muted">Virtual balance</span><strong>🪙 <span id="lobbyChips">1,000</span></strong></div>
+    <div class="stat"><span class="muted">Practice points</span><strong>⭐ <span id="lobbyChips">1,000</span></strong></div>
     <div class="stat"><span class="muted">Hands played</span><strong id="played">0</strong></div>
     <div class="stat"><span class="muted">Wins</span><strong id="wins">0</strong></div>
   </div>
-  <div class="lobbysectiontitle"><h3>Choose your game</h3><span>VIRTUAL CHIPS ONLY</span></div>
+  <div class="lobbysectiontitle"><h3>Choose your game</h3><span>CASUAL PRACTICE · NO WAGERS</span></div>
   <div class="lobbygames">
     <article class="gamecard"><div><div class="gameicon">🂡</div><h4>TEEN PATTI</h4><p>Classic 3-card play against computer opponents.</p></div><button id="startBtn">♠ PLAY NOW</button></article>
     <article class="gamecard blue"><div><div class="gameicon">🃏</div><h4>RUMMY</h4><p>A new game mode for a future update.</p></div><button class="coming" type="button" disabled>COMING SOON</button></article>
-    <article class="gamecard teal"><div><div class="gameicon">🎁</div><h4>DAILY BONUS</h4><p>Demo rewards and virtual-chip practice.</p></div><button id="bonusBtn" type="button">CLAIM 100 CHIPS</button></article>
+    <article class="gamecard teal"><div><div class="gameicon">🎁</div><h4>DAILY BONUS</h4><p>Earn practice points for exploring the demo.</p></div><button id="bonusBtn" type="button">CLAIM 100 POINTS</button></article>
   </div>
   <div class="lobbybottomnav">
-    <div class="navtile"><b>🏆</b>My Stats</div><div class="navtile"><b>🎯</b>Challenges</div><div class="navtile"><b>👥</b>Friends</div><div class="navtile"><b>⚙️</b>Settings</div>
+    <button class="navtile" id="statsBtn" type="button" aria-label="Open my stats"><b aria-hidden="true">🏆</b>My Stats</button><button class="navtile" id="challengesBtn" type="button" aria-label="Open practice challenges"><b aria-hidden="true">🎯</b>Challenges</button><button class="navtile" id="friendsBtn" type="button" aria-label="Open friends information"><b aria-hidden="true">👥</b>Friends</button><button class="navtile" id="settingsBtn" type="button" aria-label="Open settings"><b aria-hidden="true">⚙️</b>Settings</button>
   </div>
   <div class="bottom"><span class="note">Single-player · Computer opponents · Virtual chips only</span><button id="logoutBtn" class="secondary smallbtn">Log out</button></div>
 </section>
 <section id="gameScreen" class="hidden">
-  <div class="table"><div class="tablehead">♛ &nbsp; ROYAL TABLE &nbsp; ♛</div><div class="bots" id="bots"></div><div class="pot">POT &nbsp; 🪙 <span id="pot">0</span></div><div class="yourarea"><div class="yourlabel" id="handLabel">YOUR HAND</div><div class="hand" id="hand"></div><div class="message" id="message">Your move.</div></div></div>
-  <div class="actions"><button id="seeBtn" class="secondary">👁 See cards</button><button id="playBtn" class="primary">Play / Show</button><button id="foldBtn" class="danger">Fold</button></div>
-  <div class="bottom"><button id="newHandBtn" class="secondary smallbtn">New hand</button><button id="homeBtn" class="secondary smallbtn">Back to lobby</button><span class="note">Demo rules · No real-money betting</span></div>
+  <div class="table" role="region" aria-label="Card practice table"><div class="tablehead">♛ &nbsp; PRACTICE TABLE &nbsp; ♛</div><div class="bots" id="bots" aria-label="Computer players"></div><div class="pot" id="roundBadge">PRACTICE ROUND</div><div class="yourarea"><div class="yourlabel" id="handLabel">YOUR HAND</div><div class="hand" id="hand"></div><div class="message" id="message">Your move.</div></div></div>
+  <div class="actions"><button id="seeBtn" class="secondary" type="button">👁 See hand</button><button id="playBtn" class="primary" type="button">Reveal &amp; compare</button><button id="newHandBtn" class="secondary" type="button">New round</button></div>
+  <div class="bottom"><button id="homeBtn" class="secondary smallbtn" type="button">Back to lobby</button><span class="note">Practice only · No wagers or cash-out</span></div>
 </section>
-<div class="footer">ROYAL PATTI NEPAL · A fan-made card-game demo · Virtual chips only</div>
+<dialog id="infoDialog" aria-labelledby="dialogTitle"><div class="dialoginner"><h2 id="dialogTitle">Information</h2><p id="dialogBody"></p><button id="closeDialogBtn" class="primary" type="button">Close</button></div></dialog>
+<div class="footer">ROYAL PATTI NEPAL · Casual card practice · No wagers or cash-out</div>
 </div>
 <script>
 const $=id=>document.getElementById(id);
 const suits=['♠','♥','♦','♣'],ranks=[['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10],['J',11],['Q',12],['K',13],['A',14]];
-let player='Player',chips=1000,played=0,wins=0,deck=[],myCards=[],botHands=[],pot=0,seen=false,finished=false,round=0;
+let player='Player',chips=1000,played=0,wins=0,deck=[],myCards=[],botHands=[],seen=false,finished=false,round=0;
 function shuffle(){deck=[];for(const s of suits)for(const [r,v] of ranks)deck.push({r,v,s});for(let i=deck.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[deck[i],deck[j]]=[deck[j],deck[i]]}}
 function score(cards){const a=[...cards].sort((x,y)=>y.v-x.v),vals=a.map(c=>c.v),sameSuit=a.every(c=>c.s===a[0].s),trips=vals[0]===vals[1]&&vals[1]===vals[2],pair=vals[0]===vals[1]||vals[1]===vals[2]||vals[0]===vals[2];let straight=vals[0]-vals[1]===1&&vals[1]-vals[2]===1;if(vals.join(',')==='14,3,2')straight=true;
 if(trips)return [6,vals[0]];if(straight&&sameSuit)return [5,vals[0]===14&&vals[1]===3?3:vals[0]];if(sameSuit)return [4,...vals];if(straight)return [3,vals[0]===14&&vals[1]===3?3:vals[0]];if(pair){let p=vals[0]===vals[1]?vals[0]:vals[1]===vals[2]?vals[1]:vals[0];return [2,p,...vals.filter(v=>v!==p)]}return [1,...vals]}
@@ -168,7 +182,14 @@ function showScreen(id){['loginScreen','lobbyScreen','gameScreen'].forEach(x=>$(
 function login(guest){player=($('playerName').value.trim()||'Player').slice(0,20);if(!guest){$('message').textContent='';alert('Google login is not connected yet. Please use Guest mode for this playable demo.');return} $('welcomeTitle').textContent='Welcome, '+player;showScreen('lobbyScreen');renderChips()}
 function cardEl(c,back=false){const el=document.createElement('div');if(back){el.className='back';return el}el.className='card '+(['♥','♦'].includes(c.s)?'red':'');el.innerHTML='<span class="rank">'+c.r+'<br>'+c.s+'</span><span class="suit">'+c.s+'</span><span class="rank" style="align-self:flex-end;transform:rotate(180deg)">'+c.r+'</span>';return el}
 function renderBots(reveal=false){const names=['Maya Bot','Bikash Bot','Raju Bot'];$('bots').innerHTML='';names.forEach((n,i)=>{const seat=document.createElement('div');seat.className='seat';seat.innerHTML='<div class="avatar">🤖</div><div class="seatname">'+n+'</div><div class="status">'+(finished?(compare(botHands[i],myCards)>0?'Won hand':compare(botHands[i],myCards)===0?'Tie':'Lost hand'):'Thinking…')+'</div>';const backs=document.createElement('div');backs.className='backs';for(let j=0;j<3;j++)backs.appendChild(cardEl(null,!reveal));if(reveal){backs.innerHTML='';botHands[i].forEach(c=>backs.appendChild(cardEl(c)))}seat.appendChild(backs);$('bots').appendChild(seat)})}
-function newHand(){if(chips<10){chips+=500;alert('Demo bonus: 500 virtual chips added so you can keep playing.');}shuffle();myCards=deck.splice(0,3);botHands=Array.from({length:3},()=>deck.splice(0,3));pot=40;chips-=10;seen=false;finished=false;round++;$('pot').textContent=pot;$('hand').innerHTML='';myCards.forEach(c=>$('hand').appendChild(cardEl(c)));$('handLabel').textContent='YOUR HAND · '+(seen?handName(myCards):'CARDS DEALT');$('message').textContent='Hand '+round+' started. Choose an action.';$('seeBtn').disabled=false;$('playBtn').disabled=false;$('foldBtn').disabled=false;renderBots();renderChips();showScreen('gameScreen')}
-function reveal(){if(finished)return;finished=true;played++;renderBots(true);const comparisons=botHands.map(h=>compare(myCards,h));const winners=comparisons.filter(c=>c>0).length;const ties=comparisons.filter(c=>c===0).length;$('handLabel').textContent='YOUR HAND · '+handName(myCards);if(winners===3){chips+=pot;wins++;$('message').textContent='You win! '+handName(myCards)+' takes the '+fmt(pot)+'-chip pot.';}else if(winners+ties===3&&ties>0){const share=Math.floor(pot/(ties+1));chips+=share;if(share>0)$('message').textContent='Tie! You receive '+fmt(share)+' chips from the pot.';else $('message').textContent='The hand is tied. No chips awarded.';}else{$('message').textContent='Computer wins this hand. Your hand: '+handName(myCards)+'.'}$('seeBtn').disabled=true;$('playBtn').disabled=true;$('foldBtn').disabled=true;renderChips()}
-$('bonusBtn').onclick=()=>{chips+=100;renderChips();$('bonusBtn').disabled=true;$('bonusBtn').textContent='BONUS CLAIMED';};$('guestBtn').onclick=()=>login(true);$('googleBtn').onclick=()=>login(false);$('startBtn').onclick=newHand;$('newHandBtn').onclick=newHand;$('seeBtn').onclick=()=>{seen=true;$('handLabel').textContent='YOUR HAND · '+handName(myCards);$('message').textContent='You looked at your cards: '+handName(myCards)+'.';$('seeBtn').disabled=true};$('playBtn').onclick=reveal;$('foldBtn').onclick=()=>{if(finished)return;finished=true;played++;$('message').textContent='You folded. Start a new hand when ready.';$('seeBtn').disabled=true;$('playBtn').disabled=true;$('foldBtn').disabled=true;renderBots();renderChips()};$('homeBtn').onclick=()=>{showScreen('lobbyScreen');renderChips()};$('logoutBtn').onclick=()=>showScreen('loginScreen');
+function newHand(){shuffle();myCards=deck.splice(0,3);botHands=Array.from({length:3},()=>deck.splice(0,3));seen=false;finished=false;round++;$('roundBadge').textContent='PRACTICE ROUND '+round;$('hand').innerHTML='';myCards.forEach(c=>$('hand').appendChild(cardEl(c)));$('handLabel').textContent='YOUR HAND · '+(seen?handName(myCards):'CARDS DEALT');$('message').textContent='Hand '+round+' started. Choose an action.';$('seeBtn').disabled=false;$('playBtn').disabled=false;$('foldBtn').disabled=false;renderBots();renderChips();showScreen('gameScreen')}
+function reveal(){if(finished)return;finished=true;played++;renderBots(true);const comparisons=botHands.map(h=>compare(myCards,h));const winners=comparisons.filter(c=>c>0).length;const ties=comparisons.filter(c=>c===0).length;$('handLabel').textContent='YOUR HAND · '+handName(myCards);if(winners===3){chips+=10;wins++;$('message').textContent='You beat every computer player! '+handName(myCards)+'. +10 practice points.';}else if(winners+ties===3&&ties>0){$('message').textContent='The result is a tie. Your hand: '+handName(myCards)+'.';}else{$('message').textContent='Keep practicing! Your hand: '+handName(myCards)+'.'}$('seeBtn').disabled=true;$('playBtn').disabled=true;renderChips()}
+$('bonusBtn').onclick=()=>{chips+=100;renderChips();$('bonusBtn').disabled=true;$('bonusBtn').textContent='BONUS CLAIMED';};$('guestBtn').onclick=()=>login(true);$('googleBtn').onclick=()=>login(false);$('startBtn').onclick=newHand;$('newHandBtn').onclick=newHand;$('seeBtn').onclick=()=>{seen=true;$('handLabel').textContent='YOUR HAND · '+handName(myCards);$('message').textContent='You looked at your cards: '+handName(myCards)+'.';$('seeBtn').disabled=true};$('playBtn').onclick=reveal; $('homeBtn').onclick=()=>{showScreen('lobbyScreen');renderChips()};$('logoutBtn').onclick=()=>showScreen('loginScreen');
+function openInfo(title,body){const dialog=$('infoDialog');$('dialogTitle').textContent=title;$('dialogBody').textContent=body;dialog.showModal()}
+$('statsBtn').onclick=()=>openInfo('My stats','Hands completed: '+played+' · Wins: '+wins+' · Practice points: '+fmt(chips));
+$('challengesBtn').onclick=()=>openInfo('Practice challenges','Try different hands, learn the rankings, and compare your cards with the computer players. Challenges are for practice only.');
+$('friendsBtn').onclick=()=>openInfo('Friends','Friend features are not available in this offline demo yet.');
+$('settingsBtn').onclick=()=>openInfo('Settings','Player name: '+player+'. This demo does not use an online account or send your gameplay data to a server.');
+$('closeDialogBtn').onclick=()=> $('infoDialog').close();
+$('playerName').addEventListener('keydown',e=>{if(e.key==='Enter')login(true)});
 </script></body></html>
