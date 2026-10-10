@@ -21,3 +21,13 @@ Royal Patti Nepal is a planned online Teen Patti card game project.
 ## First milestone
 
 Create a polished playable demo before connecting online multiplayer. Real multiplayer requires a backend service; GitHub Pages alone can host the front end but cannot manage real-time game rooms by itself.
+
+## Automated regression tests
+
+The card-ranking tests use Node.js's built-in test runner and do not require installing packages.
+
+```bash
+node --test tests/score.test.cjs
+```
+
+The tests cover hand-category order, the A-3-2 low sequence, kicker tie-breaks, equal hands, hand labels, and invalid input handling. These tests validate the card-ranking functions; they do not replace real browser/mobile testing of the full interface.
