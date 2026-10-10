@@ -39,11 +39,14 @@ test('hand categories follow the expected Teen Patti practice order', () => {
   assert.ok(compare(pairKings, highAce) > 0);
 });
 
-test('A-3-2 is treated as the low sequence and loses to 7-6-5', () => {
+test('A-2-3 is a special sequence above K-Q-J and below A-K-Q', () => {
+  const aceKingQueen = hand([[14, '♠'], [13, '♥'], [12, '♦']]);
+  const kingQueenJack = hand([[13, '♠'], [12, '♥'], [11, '♦']]);
   assert.equal(score(wheel)[0], 5);
   assert.equal(score(wheelMixed)[0], 4);
-  assert.ok(compare(sequence, wheelMixed) > 0);
-  assert.ok(compare(pureSequence, wheel) > 0);
+  assert.ok(compare(aceKingQueen, wheelMixed) > 0);
+  assert.ok(compare(wheelMixed, kingQueenJack) > 0);
+  assert.ok(compare(wheel, pureSequence) > 0);
 });
 
 test('same-rank pairs use the kicker to break ties', () => {
@@ -68,4 +71,24 @@ test('invalid hands return a safe low score instead of throwing', () => {
   assert.deepEqual(Array.from(score([])), [0]);
   assert.deepEqual(Array.from(score(null)), [0]);
   assert.deepEqual(Array.from(score([{ v: 14, s: '♠' }])), [0]);
+});
+
+test('a pair is compared by pair rank then the single kicker', () => {
+  const pairQueensHighKicker = hand([[12, '♠'], [12, '♥'], [14, '♦']]);
+  const pairJacksAceKicker = hand([[11, '♠'], [11, '♥'], [14, '♦']]);
+  const pairQueensLowKicker = hand([[12, '♣'], [12, '♦'], [2, '♠']]);
+  assert.ok(compare(pairQueensHighKicker, pairJacksAceKicker) > 0);
+  assert.ok(compare(pairQueensHighKicker, pairQueensLowKicker) > 0);
+});
+
+test('duplicate physical cards and invalid suits are rejected', () => {
+  assert.deepEqual(Array.from(score(hand([[14, '♠'], [14, '♠'], [2, '♥']]))), [0]);
+  assert.deepEqual(Array.from(score(hand([[14, 'X'], [13, '♥'], [2, '♦']]))), [0]);
+});
+
+test('A-K-Q sequence beats K-Q-J, and sequence ranks beat colour', () => {
+  const akq = hand([[14, '♠'], [13, '♥'], [12, '♦']]);
+  const kqj = hand([[13, '♠'], [12, '♥'], [11, '♦']]);
+  assert.ok(compare(akq, kqj) > 0);
+  assert.ok(compare(kqj, color) > 0);
 });
