@@ -10,6 +10,56 @@ button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padd
 .wrap{max-width:1050px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}.brand{display:flex;align-items:center;gap:12px}.crest{width:46px;height:46px;border:1px solid var(--gold);border-radius:14px;display:grid;place-items:center;color:var(--gold);font-size:25px;background:#173526}.brand h1{font-size:20px;letter-spacing:1.5px;margin:0}.brand small{color:var(--muted);letter-spacing:2px}.chipbox{border:1px solid #456755;border-radius:12px;padding:9px 13px;color:var(--gold);white-space:nowrap}
 .panel{background:linear-gradient(145deg,#173528,#10251d);border:1px solid #355844;border-radius:22px;padding:18px;box-shadow:0 18px 60px #0004}.login{max-width:450px;margin:7vh auto}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:2px;font-weight:800}.login h2{font-size:30px;margin:10px 0}.muted{color:var(--muted)}.input{width:100%;background:#0b1c15;border:1px solid #466552;border-radius:12px;padding:13px;color:white;margin:8px 0}.primary{background:linear-gradient(120deg,#f0d38d,#c6a153);color:#17251c}.secondary{background:#254b39;color:#fff;border:1px solid #50745d}.danger{background:#44252a;color:#ffdfe1;border:1px solid #80464a}.full{width:100%}.divider{display:flex;align-items:center;gap:10px;color:#8ea598;font-size:12px;margin:13px 0}.divider:before,.divider:after{content:"";height:1px;background:#355844;flex:1}.note{font-size:12px;line-height:1.55;color:#9fb3a6}.hidden{display:none!important}.table{margin-top:10px;min-height:390px;border:5px solid #6f5631;border-radius:190px;background:radial-gradient(ellipse,#176346,#0c442f 60%,#093322);padding:22px 15px;position:relative;box-shadow:inset 0 0 0 2px #c7a760,inset 0 0 45px #041c11}.tablehead{text-align:center;color:#e7d39a;font-size:12px;letter-spacing:2px}.bots{display:flex;justify-content:space-around;gap:8px;margin:20px auto 14px;max-width:700px}.seat{text-align:center;min-width:80px}.avatar{width:44px;height:44px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;background:#254c39;border:1px solid #7b9b81;font-size:22px}.seatname{font-size:12px;color:#e0e8dd}.status{font-size:11px;color:#e5c779;min-height:16px}.backs{display:flex;justify-content:center;gap:3px;margin-top:6px}.back{width:25px;height:37px;border:1px solid #e0c47b;border-radius:5px;background:repeating-linear-gradient(45deg,#17432f,#17432f 3px,#d1b56b 4px,#17432f 5px)}.pot{margin:14px auto 20px;width:max-content;border:1px solid #d5b969;background:#0b3425;border-radius:99px;padding:8px 18px;color:#f4d88b;font-weight:800}.hand{display:flex;justify-content:center;gap:10px;margin:12px 0}.card{width:clamp(62px,15vw,86px);height:clamp(92px,21vw,124px);border-radius:10px;background:var(--cream);color:#18221c;box-shadow:0 5px 12px #0019;display:flex;flex-direction:column;justify-content:space-between;padding:8px;font-weight:850;border:1px solid #ddd}.card.red{color:#c42c39}.card .rank{font-size:20px}.card .suit{text-align:center;font-size:33px}.yourarea{text-align:center}.yourlabel{color:#e7d39a;font-size:12px;letter-spacing:2px}.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:14px 0 6px}.message{min-height:24px;text-align:center;color:#f2dc9f;font-size:14px}.lobbygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.stat{background:#0d2118;border:1px solid #355844;border-radius:14px;padding:13px}.stat strong{display:block;color:var(--gold);font-size:20px}.bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}.smallbtn{padding:8px 11px;font-size:12px}.footer{text-align:center;margin:18px;color:#829a8c;font-size:11px}
 @media(max-width:600px){.wrap{padding:12px}.brand h1{font-size:16px}.panel{padding:13px}.table{min-height:355px;padding:15px 8px;border-width:4px}.bots{gap:0}.seat{min-width:65px}.avatar{width:37px;height:37px}.lobbygrid{grid-template-columns:1fr}.top{align-items:flex-start}.chipbox{font-size:12px}.actions button{flex:1 1 40%}}
+
+/* Royal lobby + table redesign */
+body{background:radial-gradient(circle at 70% 12%,#52132d 0,#200817 38%,#090b16 100%);background-attachment:fixed}
+.wrap{max-width:1200px;padding:16px}
+.top{padding:12px 16px;border:1px solid #673047;border-radius:18px;background:linear-gradient(100deg,#270b1cdd,#10111ee8);box-shadow:0 10px 28px #0005}
+.brand h1{font-size:clamp(16px,2.2vw,23px);letter-spacing:1.4px}.brand small{font-size:10px;letter-spacing:2px}
+.crest{width:54px;height:54px;flex-shrink:0;border:2px solid #f6c95c!important;box-shadow:0 0 18px #f8c84b25}
+.chipbox{background:#210e26;border-color:#8e5a8e;color:#ffe69a}
+#lobbyScreen{padding:18px;background:linear-gradient(135deg,#2b0d23,#160e22 55%,#0d2428);border-color:#733654;overflow:hidden}
+.lobbyhero{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:14px;align-items:center;min-height:180px;padding:22px;border-radius:20px;background:radial-gradient(circle at 80% 30%,#a62c56 0,#512044 38%,#24122e 75%);border:1px solid #a54a71;overflow:hidden}
+.lobbyhero:after{content:"♠  ♥  ♣  ♦";position:absolute;right:-8px;bottom:-18px;font-size:75px;letter-spacing:8px;color:#fff;opacity:.07;transform:rotate(-12deg);pointer-events:none}
+.heroeyebrow{color:#ffdb79;font-size:11px;letter-spacing:2px;font-weight:900}
+.lobbyhero h2{font-size:clamp(26px,4vw,42px);line-height:1.05;margin:8px 0;color:#fff7e8}
+.lobbyhero p{margin:0;color:#e3cbd9;max-width:470px}
+.herobadge{justify-self:center;width:min(100%,210px);aspect-ratio:1;display:grid;place-items:center;filter:drop-shadow(0 12px 18px #0008)}
+.herobadge img{width:100%;height:100%;object-fit:contain;border-radius:24px}
+.lobbysectiontitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 2px 12px}
+.lobbysectiontitle h3{margin:0;color:#fff1d0;font-size:18px}.lobbysectiontitle span{font-size:11px;color:#c9a8bc}
+.lobbygames{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.gamecard{position:relative;min-height:200px;border:1px solid #a94d68;border-radius:18px;padding:14px;background:linear-gradient(145deg,#9d173c,#551333 60%,#241027);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.gamecard:before{content:"";position:absolute;width:150px;height:150px;border-radius:50%;background:#ffcb3e18;right:-45px;top:-40px}
+.gamecard.blue{background:linear-gradient(145deg,#1668a7,#15356c 62%,#171637);border-color:#568bd4}
+.gamecard.teal{background:linear-gradient(145deg,#0d8c83,#07534f 62%,#102d38);border-color:#5cc6b4}
+.gamecard .gameicon{font-size:43px;filter:drop-shadow(0 4px 4px #0006);z-index:1}
+.gamecard h4{font-size:19px;margin:9px 0 4px;letter-spacing:.5px}.gamecard p{font-size:12px;color:#f0dce8;margin:0 0 12px}
+.gamecard button{padding:10px;background:linear-gradient(#ffe37d,#e8a923);color:#371426;border-radius:10px;font-size:13px}
+.gamecard .coming{background:#3d3c54;color:#e7dcec;border:1px solid #77718b}
+.lobbybottomnav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.navtile{background:#1a1024;border:1px solid #4c2d4d;border-radius:13px;padding:12px 6px;text-align:center;color:#f4d9e8;font-size:12px}
+.navtile b{display:block;font-size:23px;margin-bottom:5px}
+.lobbystats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.lobbystats .stat{background:#120f20;border-color:#51304e;border-radius:13px}
+#gameScreen{padding:14px;border:1px solid #633049;border-radius:22px;background:linear-gradient(145deg,#1d0d20,#0b1719)}
+.table{margin-top:0;min-height:520px;border:8px solid #29171a;border-radius:260px;background:radial-gradient(ellipse at center,#22b58b 0,#078365 46%,#07563f 72%,#053322 100%);padding:20px 14px;position:relative;box-shadow:inset 0 0 0 3px #d0a64b,inset 0 0 0 8px #123c2e,inset 0 0 45px #00190f,0 16px 25px #0007}
+.table:before{content:"ROYAL PATTI";position:absolute;top:43%;left:50%;transform:translate(-50%,-50%);font-size:clamp(25px,5vw,52px);font-weight:1000;letter-spacing:4px;color:#fff;opacity:.10;pointer-events:none;white-space:nowrap}
+.tablehead{font-weight:900;letter-spacing:3px;text-shadow:0 2px 4px #002c20}
+.bots{margin:22px auto 14px;position:relative;z-index:1}
+.seat{background:#003c2c65;border:1px solid #a6e5c14d;border-radius:15px;padding:8px 5px;box-shadow:0 4px 8px #00251a30}
+.avatar{width:48px;height:48px;background:linear-gradient(135deg,#f5d27c,#a96523);border:2px solid #ffe29a;color:#271321}
+.pot{position:relative;z-index:1;background:#063b2d;border:2px solid #f4d37c;box-shadow:0 4px 12px #002a20a8}
+.yourarea{position:relative;z-index:1}.yourlabel{font-weight:900;text-shadow:0 2px 4px #003626}
+.card{border:2px solid #fff8e9;box-shadow:0 8px 15px #001b15a8}
+.actions{padding:12px;background:#170d20;border:1px solid #523047;border-radius:16px}
+.footer{color:#bca6b6}
+@media(max-width:650px){
+.wrap{padding:9px}.top{padding:10px;gap:8px}.brand{gap:8px}.brand h1{font-size:14px;letter-spacing:.7px}.brand small{font-size:8px;letter-spacing:1px}.crest{width:45px;height:45px}.chipbox{padding:8px;font-size:11px}
+#lobbyScreen{padding:11px}.lobbyhero{grid-template-columns:1fr 100px;min-height:145px;padding:14px;gap:6px}.lobbyhero h2{font-size:25px}.lobbyhero p{font-size:12px}.herobadge{width:100px}.lobbygames{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.gamecard{min-height:175px;padding:11px}.gamecard h4{font-size:15px}.gamecard p{font-size:11px}.gamecard .gameicon{font-size:34px}.lobbybottomnav{grid-template-columns:repeat(4,1fr);gap:5px}.navtile{font-size:10px;padding:9px 3px}.navtile b{font-size:19px}.lobbystats{gap:6px}.lobbystats .stat{padding:9px}.lobbystats .stat strong{font-size:16px}
+.table{min-height:440px;padding:15px 6px;border-width:5px;border-radius:170px}.bots{gap:4px;margin:24px auto 14px}.seat{min-width:0;padding:6px 2px;flex:1}.avatar{width:35px;height:35px;font-size:18px}.seatname{font-size:10px}.status{font-size:9px}.back{width:19px;height:29px}.card{width:clamp(56px,17vw,78px);height:clamp(84px,25vw,112px);padding:6px}.card .rank{font-size:16px}.card .suit{font-size:27px}.pot{margin:12px auto 16px;padding:7px 13px}.actions{gap:6px;padding:8px}.actions button{flex:1 1 28%;padding:11px 7px;font-size:12px}
+}
+
 </style></head><body>
 <div class="wrap">
 <header class="top"><div class="brand"><div class="crest" style="padding:0;overflow:hidden;border-radius:12px"><img src="./icon.svg?v=2" alt="Royal Patti icon" style="width:100%;height:100%;object-fit:cover"></div><div><h1>ROYAL PATTI NEPAL</h1><small>THE ROYAL CARD TABLE</small></div></div><div class="chipbox">🪙 <span id="chipCount">1,000</span> virtual chips</div></header>
@@ -21,14 +71,30 @@ button,input{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padd
 <p class="note">Google sign-in needs Firebase project configuration before it can securely authenticate real accounts. Guest mode is available now. Your virtual chips have no cash value.</p>
 </section>
 <section id="lobbyScreen" class="panel hidden">
-<div class="eyebrow">YOUR PRIVATE TABLE</div><h2 id="welcomeTitle">Welcome, Player</h2><p class="muted">Choose a table and test your strategy against three computer opponents.</p>
-<div class="lobbygrid"><div class="stat"><span class="muted">Your balance</span><strong>🪙 <span id="lobbyChips">1,000</span></strong></div><div class="stat"><span class="muted">Matches played</span><strong id="played">0</strong></div><div class="stat"><span class="muted">Wins</span><strong id="wins">0</strong></div></div>
-<button id="startBtn" class="primary full">♠ Start a new hand</button><div class="bottom"><span class="note">Single-player · Computer opponents · Virtual chips only</span><button id="logoutBtn" class="secondary smallbtn">Log out</button></div>
+  <div class="lobbyhero">
+    <div><div class="heroeyebrow">WELCOME BACK TO THE TABLE</div><h2 id="welcomeTitle">Welcome, Player</h2><p>Choose your table. Play smart. Enjoy the royal card-room experience.</p></div>
+    <div class="herobadge"><img src="./icon.svg?v=2" alt="Royal Patti Nepal app icon"></div>
+  </div>
+  <div class="lobbystats">
+    <div class="stat"><span class="muted">Virtual balance</span><strong>🪙 <span id="lobbyChips">1,000</span></strong></div>
+    <div class="stat"><span class="muted">Hands played</span><strong id="played">0</strong></div>
+    <div class="stat"><span class="muted">Wins</span><strong id="wins">0</strong></div>
+  </div>
+  <div class="lobbysectiontitle"><h3>Choose your game</h3><span>VIRTUAL CHIPS ONLY</span></div>
+  <div class="lobbygames">
+    <article class="gamecard"><div><div class="gameicon">🂡</div><h4>TEEN PATTI</h4><p>Classic 3-card play against computer opponents.</p></div><button id="startBtn">♠ PLAY NOW</button></article>
+    <article class="gamecard blue"><div><div class="gameicon">🃏</div><h4>RUMMY</h4><p>A new game mode for a future update.</p></div><button class="coming" type="button" disabled>COMING SOON</button></article>
+    <article class="gamecard teal"><div><div class="gameicon">🎁</div><h4>DAILY BONUS</h4><p>Demo rewards and virtual-chip practice.</p></div><button id="bonusBtn" type="button">CLAIM 100 CHIPS</button></article>
+  </div>
+  <div class="lobbybottomnav">
+    <div class="navtile"><b>🏆</b>My Stats</div><div class="navtile"><b>🎯</b>Challenges</div><div class="navtile"><b>👥</b>Friends</div><div class="navtile"><b>⚙️</b>Settings</div>
+  </div>
+  <div class="bottom"><span class="note">Single-player · Computer opponents · Virtual chips only</span><button id="logoutBtn" class="secondary smallbtn">Log out</button></div>
 </section>
 <section id="gameScreen" class="hidden">
-<div class="table"><div class="tablehead">♛ &nbsp; ROYAL TABLE &nbsp; ♛</div><div class="bots" id="bots"></div><div class="pot">POT &nbsp; 🪙 <span id="pot">0</span></div><div class="yourarea"><div class="yourlabel" id="handLabel">YOUR HAND</div><div class="hand" id="hand"></div><div class="message" id="message">Your move.</div></div></div>
-<div class="actions"><button id="seeBtn" class="secondary">👁 See cards</button><button id="playBtn" class="primary">Play / Show</button><button id="foldBtn" class="danger">Fold</button></div>
-<div class="bottom"><button id="newHandBtn" class="secondary smallbtn">New hand</button><button id="homeBtn" class="secondary smallbtn">Back to lobby</button><span class="note">Demo rules · No real-money betting</span></div>
+  <div class="table"><div class="tablehead">♛ &nbsp; ROYAL TABLE &nbsp; ♛</div><div class="bots" id="bots"></div><div class="pot">POT &nbsp; 🪙 <span id="pot">0</span></div><div class="yourarea"><div class="yourlabel" id="handLabel">YOUR HAND</div><div class="hand" id="hand"></div><div class="message" id="message">Your move.</div></div></div>
+  <div class="actions"><button id="seeBtn" class="secondary">👁 See cards</button><button id="playBtn" class="primary">Play / Show</button><button id="foldBtn" class="danger">Fold</button></div>
+  <div class="bottom"><button id="newHandBtn" class="secondary smallbtn">New hand</button><button id="homeBtn" class="secondary smallbtn">Back to lobby</button><span class="note">Demo rules · No real-money betting</span></div>
 </section>
 <div class="footer">ROYAL PATTI NEPAL · A fan-made card-game demo · Virtual chips only</div>
 </div>
@@ -49,5 +115,5 @@ function cardEl(c,back=false){const el=document.createElement('div');if(back){el
 function renderBots(reveal=false){const names=['Maya Bot','Bikash Bot','Raju Bot'];$('bots').innerHTML='';names.forEach((n,i)=>{const seat=document.createElement('div');seat.className='seat';seat.innerHTML='<div class="avatar">🤖</div><div class="seatname">'+n+'</div><div class="status">'+(finished?(compare(botHands[i],myCards)>0?'Won hand':compare(botHands[i],myCards)===0?'Tie':'Lost hand'):'Thinking…')+'</div>';const backs=document.createElement('div');backs.className='backs';for(let j=0;j<3;j++)backs.appendChild(cardEl(null,!reveal));if(reveal){backs.innerHTML='';botHands[i].forEach(c=>backs.appendChild(cardEl(c)))}seat.appendChild(backs);$('bots').appendChild(seat)})}
 function newHand(){if(chips<10){chips+=500;alert('Demo bonus: 500 virtual chips added so you can keep playing.');}shuffle();myCards=deck.splice(0,3);botHands=Array.from({length:3},()=>deck.splice(0,3));pot=40;chips-=10;seen=false;finished=false;round++;$('pot').textContent=pot;$('hand').innerHTML='';myCards.forEach(c=>$('hand').appendChild(cardEl(c)));$('handLabel').textContent='YOUR HAND · '+(seen?handName(myCards):'CARDS DEALT');$('message').textContent='Hand '+round+' started. Choose an action.';$('seeBtn').disabled=false;$('playBtn').disabled=false;$('foldBtn').disabled=false;renderBots();renderChips();showScreen('gameScreen')}
 function reveal(){if(finished)return;finished=true;played++;renderBots(true);const comparisons=botHands.map(h=>compare(myCards,h));const winners=comparisons.filter(c=>c>0).length;const ties=comparisons.filter(c=>c===0).length;$('handLabel').textContent='YOUR HAND · '+handName(myCards);if(winners===3){chips+=pot;wins++;$('message').textContent='You win! '+handName(myCards)+' takes the '+fmt(pot)+'-chip pot.';}else if(winners+ties===3&&ties>0){const share=Math.floor(pot/(ties+1));chips+=share;if(share>0)$('message').textContent='Tie! You receive '+fmt(share)+' chips from the pot.';else $('message').textContent='The hand is tied. No chips awarded.';}else{$('message').textContent='Computer wins this hand. Your hand: '+handName(myCards)+'.'}$('seeBtn').disabled=true;$('playBtn').disabled=true;$('foldBtn').disabled=true;renderChips()}
-$('guestBtn').onclick=()=>login(true);$('googleBtn').onclick=()=>login(false);$('startBtn').onclick=newHand;$('newHandBtn').onclick=newHand;$('seeBtn').onclick=()=>{seen=true;$('handLabel').textContent='YOUR HAND · '+handName(myCards);$('message').textContent='You looked at your cards: '+handName(myCards)+'.';$('seeBtn').disabled=true};$('playBtn').onclick=reveal;$('foldBtn').onclick=()=>{if(finished)return;finished=true;played++;$('message').textContent='You folded. Start a new hand when ready.';$('seeBtn').disabled=true;$('playBtn').disabled=true;$('foldBtn').disabled=true;renderBots();renderChips()};$('homeBtn').onclick=()=>{showScreen('lobbyScreen');renderChips()};$('logoutBtn').onclick=()=>showScreen('loginScreen');
+$('bonusBtn').onclick=()=>{chips+=100;renderChips();$('bonusBtn').disabled=true;$('bonusBtn').textContent='BONUS CLAIMED';};$('guestBtn').onclick=()=>login(true);$('googleBtn').onclick=()=>login(false);$('startBtn').onclick=newHand;$('newHandBtn').onclick=newHand;$('seeBtn').onclick=()=>{seen=true;$('handLabel').textContent='YOUR HAND · '+handName(myCards);$('message').textContent='You looked at your cards: '+handName(myCards)+'.';$('seeBtn').disabled=true};$('playBtn').onclick=reveal;$('foldBtn').onclick=()=>{if(finished)return;finished=true;played++;$('message').textContent='You folded. Start a new hand when ready.';$('seeBtn').disabled=true;$('playBtn').disabled=true;$('foldBtn').disabled=true;renderBots();renderChips()};$('homeBtn').onclick=()=>{showScreen('lobbyScreen');renderChips()};$('logoutBtn').onclick=()=>showScreen('loginScreen');
 </script></body></html>
