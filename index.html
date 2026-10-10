@@ -60,6 +60,61 @@ body{background:radial-gradient(circle at 70% 12%,#52132d 0,#200817 38%,#090b16 
 .table{min-height:440px;padding:15px 6px;border-width:5px;border-radius:170px}.bots{gap:4px;margin:24px auto 14px}.seat{min-width:0;padding:6px 2px;flex:1}.avatar{width:35px;height:35px;font-size:18px}.seatname{font-size:10px}.status{font-size:9px}.back{width:19px;height:29px}.card{width:clamp(56px,17vw,78px);height:clamp(84px,25vw,112px);padding:6px}.card .rank{font-size:16px}.card .suit{font-size:27px}.pot{margin:12px auto 16px;padding:7px 13px}.actions{gap:6px;padding:8px}.actions button{flex:1 1 28%;padding:11px 7px;font-size:12px}
 }
 
+
+
+/* Modern colorful mobile polish */
+:root{--bg:#11152b;--panel:#1b2140;--gold:#ffd166;--cream:#fffdf7;--muted:#c4c9e2;--green:#087f8c;--red:#ff5470}
+body{background:radial-gradient(ellipse at 15% 0%,#3730a3 0,#17152f 42%,#0b1020 100%);color:var(--cream)}
+button{min-height:44px;touch-action:manipulation}
+button:focus-visible,input:focus-visible{outline:3px solid #ffd166;outline-offset:3px}
+.panel{background:linear-gradient(145deg,#20284c,#151b34);border-color:#444f87}
+.top{background:linear-gradient(100deg,#20204aee,#121b35ee);border-color:#5458a2}
+.crest{background:linear-gradient(145deg,#ffcf70,#ed7d31);color:#281742;border-color:#fff0ad!important}
+.chipbox{background:#222044;border-color:#7775db;color:#ffe7a0}
+#lobbyScreen{background:linear-gradient(135deg,#24205b,#192b53 55%,#0d424d);border-color:#6668bb}
+.lobbyhero{background:radial-gradient(circle at 80% 30%,#ff6584 0,#7433a6 40%,#24205b 80%);border-color:#a78bfa}
+.heroeyebrow{color:#ffe08a}
+.lobbysectiontitle h3{color:#fff}
+.lobbysectiontitle span{color:#c9d4ff}
+.gamecard{background:linear-gradient(145deg,#ff5470,#a31d63 60%,#391b58);border-color:#ff91a5}
+.gamecard.blue{background:linear-gradient(145deg,#4f8cff,#3541a8 62%,#251d59);border-color:#92b5ff}
+.gamecard.teal{background:linear-gradient(145deg,#20c9a6,#087f8c 62%,#153b64);border-color:#79f2dc}
+.gamecard button{background:linear-gradient(120deg,#fff0a6,#ffc857);color:#28204a}
+.gamecard .coming{background:#30395f;color:#e7eaff;border-color:#727db5}
+.navtile{background:#171d3a;border-color:#4b548b;color:#f2f3ff}
+.lobbystats .stat{background:#151b35;border-color:#454d80}
+#gameScreen{background:linear-gradient(145deg,#202044,#101d32);border-color:#5359a0}
+.table{background:radial-gradient(ellipse at center,#23bfa0 0,#087f8c 46%,#075449 76%,#063c3d 100%);border-color:#3c2b58;box-shadow:inset 0 0 0 3px #ffd166,inset 0 0 0 8px #174b50,inset 0 0 45px #001b26,0 16px 25px #0007}
+.pot{background:#112b43;border-color:#ffd166}
+.actions{background:#17152f;border-color:#454178}
+.primary{background:linear-gradient(120deg,#ffe08a,#ffb84d);color:#251b43}
+.secondary{background:linear-gradient(120deg,#4657a8,#343875);color:#fff;border-color:#7787dc}
+.danger{background:linear-gradient(120deg,#d93662,#92234f);color:#fff;border-color:#ff7b9c}
+.muted{color:#c4c9e2}
+.note{color:#b8c4e9}
+@media(max-width:650px){
+  .wrap{padding:8px}
+  .top{border-radius:14px}
+  #lobbyScreen{padding:10px}
+  .lobbyhero{grid-template-columns:minmax(0,1fr) 82px;padding:12px;min-height:130px}
+  .lobbyhero h2{font-size:clamp(22px,6vw,28px)}
+  .herobadge{width:82px}
+  .lobbygames{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gamecard{min-width:0}
+  .table{width:100%;min-height:410px}
+  .actions button{min-width:0}
+}
+@media(max-width:360px){
+  .brand small{display:none}
+  .chipbox{white-space:normal;max-width:120px;text-align:center}
+  .lobbyhero{grid-template-columns:minmax(0,1fr) 64px}
+  .herobadge{width:64px}
+  .lobbygames{grid-template-columns:1fr}
+  .lobbybottomnav{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .table{min-height:380px;border-radius:130px}
+  .seatname{font-size:9px}
+}
+
 </style></head><body>
 <div class="wrap">
 <header class="top"><div class="brand"><div class="crest" style="padding:0;overflow:hidden;border-radius:12px"><img src="./icon.svg?v=2" alt="Royal Patti icon" style="width:100%;height:100%;object-fit:cover"></div><div><h1>ROYAL PATTI NEPAL</h1><small>THE ROYAL CARD TABLE</small></div></div><div class="chipbox">🪙 <span id="chipCount">1,000</span> virtual chips</div></header>
