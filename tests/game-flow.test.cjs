@@ -19,7 +19,10 @@ class FakeElement {
     this._innerHTML = '';
     this.handlers = {};
     this.classList = { toggle: () => {} };
+    this.attributes = {};
   }
+  setAttribute(name, value) { this.attributes[name] = String(value); }
+  getAttribute(name) { return Object.prototype.hasOwnProperty.call(this.attributes, name) ? this.attributes[name] : null; }
   set innerHTML(value) { this._innerHTML = value; this.children = []; }
   get innerHTML() { return this._innerHTML; }
   appendChild(child) { this.children.push(child); return child; }
